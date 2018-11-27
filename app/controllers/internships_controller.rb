@@ -1,4 +1,5 @@
 class InternshipsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_internship, only: [:show, :edit, :update, :destroy]
 
   # GET /internships
@@ -25,6 +26,8 @@ class InternshipsController < ApplicationController
   # POST /internships.json
   def create
     @internship = Internship.new(internship_params)
+    @internship.status = "Активная"
+    @internship.employer_id = current_user.id
 
     respond_to do |format|
       if @internship.save

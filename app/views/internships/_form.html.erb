@@ -57,11 +57,6 @@
   </div>
 
   <div class="field">
-    <%= form.label :string %>
-    <%= form.text_field :string %>
-  </div>
-
-  <div class="field">
     <%= form.label :salary %>
     <%= form.number_field :salary %>
   </div>
@@ -90,6 +85,13 @@
     <%= form.label :deadline %>
     <%= form.date_select :deadline %>
   </div>
+
+  <% if internship.persisted? %>
+    <div class="field">
+      <%= form.label :status %>
+      <%= form.number_field :status %>
+    </div>
+  <% end %>
 
   <div class="actions">
     <%= form.submit %>
