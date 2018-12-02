@@ -86,12 +86,10 @@
     <%= form.date_select :deadline %>
   </div>
 
-  <% if internship.persisted? %>
-    <div class="field">
-      <%= form.label :status %>
-      <%= form.number_field :status %>
-    </div>
-  <% end %>
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.number_field :status %>
+  </div>
 
   <div class="actions">
     <%= form.submit %>
