@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Email:</strong>
+  <%= @internship.email %>
+</p>
+
+<p>
   <strong>Company name:</strong>
   <%= @internship.company_name %>
 </p>
@@ -69,6 +74,8 @@
   <strong>Application materials:</strong>
   <%= @internship.application_materials %>
 </p>
+
+<%= link_to "Download application materials", @internship.application_materials_url %>
 
 <p>
   <strong>Deadline:</strong>

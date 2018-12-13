@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Theme:</strong>
+  <%= @public_talk.theme %>
+</p>
+
+<p>
+  <strong>Speaker:</strong>
+  <%= @public_talk.speaker %>
+</p>
+
+<p>
+  <strong>Public talk date:</strong>
+  <%= @public_talk.public_talk_date %>
+</p>
+
+<p>
+  <strong>Speaker contacts:</strong>
+  <%= @public_talk.speaker_contacts %>
+</p>
+
+<%= link_to 'Edit', edit_public_talk_path(@public_talk) %> |
+<%= link_to 'Back', public_talks_path %>

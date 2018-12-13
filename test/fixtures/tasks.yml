@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  company_name: MyString
+  company_specialty: MyString
+  company_description: MyText
+  social_network_link: MyString
+  position: MyString
+  task_description: MyText
+  task_materials: MyString
+  deadline: 2018-12-10
+  salary: 1
+  correction_charge: 1
+  barter: MyText
+
+two:
+  company_name: MyString
+  company_specialty: MyString
+  company_description: MyText
+  social_network_link: MyString
+  position: MyString
+  task_description: MyText
+  task_materials: MyString
+  deadline: 2018-12-10
+  salary: 1
+  correction_charge: 1
+  barter: MyText

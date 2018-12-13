@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>Email</th>
       <th>Company name</th>
       <th>Company specialty</th>
       <th>Company description</th>
@@ -28,6 +29,7 @@
   <tbody>
     <% @internships.each do |internship| %>
       <tr>
+        <td><%= internship.email %></td>
         <td><%= internship.company_name %></td>
         <td><%= internship.company_specialty %></td>
         <td><%= internship.company_description %></td>

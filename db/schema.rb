@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_27_095531) do
+ActiveRecord::Schema.define(version: 2018_12_11_095337) do
 
   create_table "internships", force: :cascade do |t|
     t.string "company_name"
@@ -31,6 +31,63 @@ ActiveRecord::Schema.define(version: 2018_11_27_095531) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "status"
+    t.string "email"
+  end
+
+  create_table "jobs", force: :cascade do |t|
+    t.string "email"
+    t.string "company_name"
+    t.string "company_specialty"
+    t.text "company_description"
+    t.string "social_network_link"
+    t.string "position"
+    t.integer "places_available"
+    t.text "worker_tasks"
+    t.text "special_requirements"
+    t.date "work_start_date"
+    t.string "schedule"
+    t.integer "salary"
+    t.text "conditions"
+    t.string "application_contacts"
+    t.text "application_description"
+    t.string "application_materials"
+    t.date "deadline"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "public_talks", force: :cascade do |t|
+    t.string "theme"
+    t.string "speaker"
+    t.date "public_talk_date"
+    t.string "speaker_contacts"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.string "name"
+    t.text "question"
+    t.string "contacts"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.string "company_name"
+    t.string "company_specialty"
+    t.text "company_description"
+    t.string "social_network_link"
+    t.string "position"
+    t.text "task_description"
+    t.string "task_materials"
+    t.date "deadline"
+    t.integer "salary"
+    t.integer "correction_charge"
+    t.text "barter"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "email"
   end
 
   create_table "users", force: :cascade do |t|

@@ -12,13 +12,18 @@
   <% end %>
 
   <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div class="field">
     <%= form.label :company_name %>
     <%= form.text_field :company_name %>
   </div>
 
   <div class="field">
     <%= form.label :company_specialty %>
-    <%= form.text_field :company_specialty %>
+    <%= form.select :company_specialty, options_for_select([["IT"], ["Дизайн"], ["Искусство"], ["Развлечения"], ["Промышленность"], ["Маркетинг"]]), include_blank: true%>
   </div>
 
   <div class="field">
@@ -52,8 +57,8 @@
   </div>
 
   <div class="field">
-    <%= form.label :schedule %>
-    <%= form.text_field :schedule %>
+    <%= form.label :schedule%>
+    <%= form.select :schedule, options_for_select([["Полная"], ["Частичная"], ["Удаленная"], ["Смешанная"]]), include_blank: true%>
   </div>
 
   <div class="field">
@@ -78,7 +83,7 @@
 
   <div class="field">
     <%= form.label :application_materials %>
-    <%= form.text_field :application_materials %>
+    <%= form.file_field :application_materials %>
   </div>
 
   <div class="field">

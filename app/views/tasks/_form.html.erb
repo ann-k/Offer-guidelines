@@ -1,0 +1,77 @@
+<%= form_with(model: task, local: true) do |form| %>
+  <% if task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+      <ul>
+      <% task.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :company_name %>
+    <%= form.text_field :company_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :company_specialty %>
+    <%= form.select :company_specialty, options_for_select([["IT"], ["Дизайн"], ["Искусство"], ["Развлечения"], ["Промышленность"], ["Маркетинг"]]), include_blank: true%>
+  </div>
+
+  <div class="field">
+    <%= form.label :company_description %>
+    <%= form.text_area :company_description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :social_network_link %>
+    <%= form.text_field :social_network_link %>
+  </div>
+
+  <div class="field">
+    <%= form.label :position %>
+    <%= form.text_field :position %>
+  </div>
+
+  <div class="field">
+    <%= form.label :task_description %>
+    <%= form.text_area :task_description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :task_materials %>
+    <%= form.file_field :task_materials %>
+  </div>
+
+  <div class="field">
+    <%= form.label :deadline %>
+    <%= form.date_select :deadline %>
+  </div>
+
+  <div class="field">
+    <%= form.label :salary %>
+    <%= form.number_field :salary %>
+  </div>
+
+  <div class="field">
+    <%= form.label :correction_charge %>
+    <%= form.number_field :correction_charge %>
+  </div>
+
+  <div class="field">
+    <%= form.label :barter %>
+    <%= form.text_area :barter %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

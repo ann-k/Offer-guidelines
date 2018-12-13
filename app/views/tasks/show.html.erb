@@ -1,0 +1,66 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @task.email %>
+</p>
+
+<p>
+  <strong>Company name:</strong>
+  <%= @task.company_name %>
+</p>
+
+<p>
+  <strong>Company specialty:</strong>
+  <%= @task.company_specialty %>
+</p>
+
+<p>
+  <strong>Company description:</strong>
+  <%= @task.company_description %>
+</p>
+
+<p>
+  <strong>Social network link:</strong>
+  <%= @task.social_network_link %>
+</p>
+
+<p>
+  <strong>Position:</strong>
+  <%= @task.position %>
+</p>
+
+<p>
+  <strong>Task description:</strong>
+  <%= @task.task_description %>
+</p>
+
+<p>
+  <strong>Task materials:</strong>
+  <%= @task.task_materials %>
+</p>
+
+<%= link_to "Download task materials", @task.task_materials_url %>
+
+<p>
+  <strong>Deadline:</strong>
+  <%= @task.deadline %>
+</p>
+
+<p>
+  <strong>Salary:</strong>
+  <%= @task.salary %>
+</p>
+
+<p>
+  <strong>Correction charge:</strong>
+  <%= @task.correction_charge %>
+</p>
+
+<p>
+  <strong>Barter:</strong>
+  <%= @task.barter %>
+</p>
+
+<%= link_to 'Edit', edit_task_path(@task) %> |
+<%= link_to 'Back', tasks_path %>

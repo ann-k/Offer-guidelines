@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  theme: MyString
+  speaker: MyString
+  public_talk_date: 2018-12-10
+  speaker_contacts: MyString
+
+two:
+  theme: MyString
+  speaker: MyString
+  public_talk_date: 2018-12-10
+  speaker_contacts: MyString
