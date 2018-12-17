@@ -1,0 +1,64 @@
+<h1>New Job</h1>
+
+<%= form_with(model: @job, local: true) do |form| %>
+  <% if @job.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@job.errors.count, "error") %> prohibited this job from being saved:</h2>
+
+      <ul>
+      <% @job.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :position %>
+    <%= form.text_field :position %>
+  </div>
+
+  <div class="field">
+    <%= form.label :places_available %>
+    <%= form.number_field :places_available %>
+  </div>
+
+  <div class="field">
+    <%= form.label :worker_tasks %>
+    <%= form.text_area :worker_tasks %>
+  </div>
+
+  <div class="field">
+    <%= form.label :special_requirements %>
+    <%= form.text_area :special_requirements %>
+  </div>
+
+  <div class="field">
+    <%= form.label :work_start_date %>
+    <%= form.date_select :work_start_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :schedule %>
+    <%= form.select :schedule, options_for_select([["Полная"], ["Частичная"], ["Удаленная"], ["Смешанная"]]), include_blank: true%>
+  </div>
+
+  <div class="field">
+    <%= form.label :salary %>
+    <%= form.number_field :salary %>
+  </div>
+
+  <div class="field">
+    <%= form.label :conditions %>
+    <%= form.text_area :conditions %>
+  </div>
+
+  <%= form.number_field :step, value: 2 %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+
+<%= link_to 'Back', jobs_path %>

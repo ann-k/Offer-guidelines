@@ -1,5 +1,5 @@
 class JobsController < ApplicationController
-  before_action :set_job, only: [:show, :edit, :update, :destroy]
+  before_action :set_job, only: [:new_step_2, :new_step_3, :show, :edit, :update, :destroy]
 
   # GET /jobs
   # GET /jobs.json
@@ -17,6 +17,16 @@ class JobsController < ApplicationController
     @job = Job.new
   end
 
+  def new_step_1
+    @job = Job.new
+  end
+
+  def new_step_2
+  end
+
+  def new_step_3
+  end
+
   # GET /jobs/1/edit
   def edit
   end
@@ -28,7 +38,7 @@ class JobsController < ApplicationController
 
     respond_to do |format|
       if @job.save
-        format.html { redirect_to @job, notice: 'Job was successfully created.' }
+        format.html { redirect_to new_step_2_job_path(@job), notice: 'Job was successfully created.' }
         format.json { render :show, status: :created, location: @job }
       else
         format.html { render :new }
@@ -40,15 +50,22 @@ class JobsController < ApplicationController
   # PATCH/PUT /jobs/1
   # PATCH/PUT /jobs/1.json
   def update
+    if params[:job][:step].to_i == 2
+      redirect_url = new_step_3_job_path(@job)
+    else
+      redirect_url = job_path(@job)
+    end
+
     respond_to do |format|
       if @job.update(job_params)
-        format.html { redirect_to @job, notice: 'Job was successfully updated.' }
+        format.html { redirect_to redirect_url, notice: 'Job was successfully updated.' }
         format.json { render :show, status: :ok, location: @job }
       else
         format.html { render :edit }
         format.json { render json: @job.errors, status: :unprocessable_entity }
       end
     end
+
   end
 
   # DELETE /jobs/1
@@ -69,6 +86,6 @@ class JobsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def job_params
-      params.require(:job).permit(:email, :company_name, :company_specialty, :company_description, :social_network_link, :position, :places_available, :worker_tasks, :special_requirements, :work_start_date, :schedule, :salary, :conditions, :application_contacts, :application_description, :application_materials, :deadline)
+      params.require(:job).permit(:email, :company_name, :company_specialty, :company_description, :social_network_link, :position, :places_available, :worker_tasks, :special_requirements, :work_start_date, :schedule, :salary, :conditions, :application_contacts, :application_description, :application_materials, :deadline, :step)
     end
 end
