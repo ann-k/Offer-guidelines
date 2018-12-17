@@ -116,13 +116,16 @@
       <%= form.label "Дедлайн" %>
     </div>
     <div class="row">
-      <div class="col">
-        <%= form.date_select :deadline %>
+      <div class="input-group mb-3 col" id="datetimepicker1">
+        <%= form.text_field :deadline, :type => "text", :class => 'form-control' %>
+        <div class="input-group-append date">
+          <span class="input-group-text" id="basic-addon2">@</span>
+        </div>
       </div>
       <div class="col">
         <%= form.check_box :deadline_none, {}, "1", "0" %>
         <%= form.label "Бессрочно" %>
-        </div>
+      </div>
     </div>
   </div>
 
