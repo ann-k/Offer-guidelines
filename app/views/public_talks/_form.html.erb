@@ -1,4 +1,4 @@
-<%= form_with(model: public_talk, local: true) do |form| %>
+<%= form_with(model: public_talk, local: true, :class => 'col-6 m-auto') do |form| %>
   <% if public_talk.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(public_talk.errors.count, "error") %> prohibited this public_talk from being saved:</h2>
@@ -11,27 +11,29 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :theme %>
-    <%= form.text_field :theme %>
+  <h1 class="mb-4">Запрос на гостевую лекцию</h1>
+
+  <div class="field form-group">
+    <%= form.label "О чем будет лекция?" %>
+    <%= form.text_field :theme, :class => 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :speaker %>
-    <%= form.text_field :speaker %>
+  <div class="field form-group">
+    <%= form.label "Кто будет лектором?" %>
+    <%= form.text_field :speaker, :class => 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :public_talk_date %>
-    <%= form.date_select :public_talk_date %>
+  <div class="field form-group">
+    <%= form.label "Когда это произойдет?" %>
+    <%= form.date_select :public_talk_date, :class => 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :speaker_contacts %>
-    <%= form.text_field :speaker_contacts %>
+  <div class="field form-group">
+    <%= form.label "Контакты лектора" %>
+    <%= form.text_field :speaker_contacts, :class => 'form-control' %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Отправить запрос', :class => 'btn btn-primary' %>
   </div>
 <% end %>

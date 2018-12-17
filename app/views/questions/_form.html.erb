@@ -1,4 +1,4 @@
-<%= form_with(model: question, local: true) do |form| %>
+<%= form_with(model: question, local: true, :class => 'col-6 m-auto') do |form| %>
   <% if question.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(question.errors.count, "error") %> prohibited this question from being saved:</h2>
@@ -11,22 +11,24 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <h1 class="mb-4">Задать вопрос</h1>
+
+  <div class="field form-group">
+    <%= form.label "Представьтесь" %>
+    <%= form.text_field :name, :class => 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :question %>
-    <%= form.text_area :question %>
+  <div class="field form-group">
+    <%= form.label "Ваш вопрос" %>
+    <%= form.text_area :question, :class => 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :contacts %>
-    <%= form.text_field :contacts %>
+  <div class="field form-group">
+    <%= form.label "Обратная связь" %>
+    <%= form.text_field :contacts, :class => 'form-control' %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Задать вопрос', :class => 'btn btn-primary' %>
   </div>
 <% end %>
