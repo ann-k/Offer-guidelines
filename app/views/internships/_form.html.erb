@@ -40,6 +40,10 @@
     <%= form.text_field :social_network_link, :class => 'form-control' %>
   </div>
 
+  <div class="actions">
+    <%= form.submit 'Далее', :class => 'btn btn-primary' %>
+  </div>
+
   <h1>Требования к стажеру</h1>
   <small id="h1Help" class="form-text text-muted mb-4">Максимально подробно опишите, что вы ожидаете от кандидата</small>
 
@@ -81,7 +85,7 @@
 
   <div class="field form-group">
     <%= form.label "Стажировка оплачивается?" %>
-    <%= form.number_field :salary, :class => 'form-control' %>
+    <%= form.textarea_field :salary, :class => 'form-control' %>
     <%= form.check_box :salary_none, {}, "1", "0" %>
     <%= form.label "Нет" %>
   </div>
@@ -90,6 +94,10 @@
     <%= form.label "Что предлагаете вы?" %>
     <%= form.text_area :conditions, :class => 'form-control', 'aria-label' => 'With textarea' %>
     <small id="conditionsHelp" class="form-text text-muted">Условия стажировки, возможность дальнейшего трудоустройства, офис, команда, плюшки.</small>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Далее', :class => 'btn btn-primary' %>
   </div>
 
   <h1 class="mb-4">Заявка</h1>
@@ -135,7 +143,7 @@
   </div>
 
   <div class="actions">
-    <%= form.submit 'Далее', :class => 'btn btn-primary' %>
+    <%= form.submit 'Опубликовать вакансию', :class => 'btn btn-primary' %>
   </div>
 
   <%# btn btn-primary %>
