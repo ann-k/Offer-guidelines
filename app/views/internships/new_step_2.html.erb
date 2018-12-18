@@ -1,0 +1,57 @@
+<%= form_with(model: @internship, local: true) do |form| %>
+  <% if @internship.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@internship.errors.count, "error") %> prohibited this internship from being saved:</h2>
+
+      <ul>
+      <% @internship.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :position %>
+    <%= form.text_field :position %>
+  </div>
+
+  <div class="field">
+    <%= form.label :places_available %>
+    <%= form.number_field :places_available %>
+  </div>
+
+  <div class="field">
+    <%= form.label :intern_tasks %>
+    <%= form.text_area :intern_tasks %>
+  </div>
+
+  <div class="field">
+    <%= form.label :internship_duration %>
+    <%= form.date_select :internship_duration %>
+  </div>
+
+  <div class="field">
+    <%= form.label :schedule%>
+    <%= form.select :schedule, options_for_select([["Полная"], ["Частичная"], ["Удаленная"], ["Смешанная"]]), include_blank: true%>
+  </div>
+
+  <div class="field">
+    <%= form.label :salary %>
+    <%= form.number_field :salary %>
+  </div>
+
+  <div class="field">
+    <%= form.label :conditions %>
+    <%= form.text_area :conditions %>
+  </div>
+
+  <%= form.number_field :step, value: 2 %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+
+<%= link_to 'Back', internships_path %>

@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :set_task, only: [:new_step_2, :show, :edit, :update, :destroy]
 
   # GET /tasks
   # GET /tasks.json
@@ -17,6 +17,13 @@ class TasksController < ApplicationController
     @task = Task.new
   end
 
+  def new_step_1
+    @task = Task.new
+  end
+
+  def new_step_2
+  end
+
   # GET /tasks/1/edit
   def edit
   end
@@ -28,7 +35,9 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.save
-        format.html { redirect_to @task, notice: 'Task was successfully created.' }
+        # if params[:internship][:step].to_i == 1
+          format.html { redirect_to new_step_2_task_path(@task), notice: 'Task was successfully created.' }
+        # end
         format.json { render :show, status: :created, location: @task }
       else
         format.html { render :new }
@@ -69,6 +78,6 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:email, :company_name, :company_specialty, :company_description, :social_network_link, :position, :task_description, :task_materials, :deadline, :salary, :correction_charge, :barter)
+      params.require(:task).permit(:email, :company_name, :company_specialty, :company_description, :social_network_link, :position, :task_description, :task_materials, :deadline, :salary, :correction_charge, :barter, :step)
     end
 end

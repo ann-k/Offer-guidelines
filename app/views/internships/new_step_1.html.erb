@@ -1,0 +1,46 @@
+<%= form_with(model: @internship, local: true) do |form| %>
+  <% if @internship.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@internship.errors.count, "error") %> prohibited this internship from being saved:</h2>
+
+      <ul>
+      <% @internship.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :company_name %>
+    <%= form.text_field :company_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :company_specialty %>
+    <%= form.select :company_specialty, options_for_select([["IT"], ["Дизайн"], ["Искусство"], ["Развлечения"], ["Промышленность"], ["Маркетинг"]]), include_blank: true%>
+  </div>
+
+  <div class="field">
+    <%= form.label :company_description %>
+    <%= form.text_area :company_description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :social_network_link %>
+    <%= form.text_field :social_network_link %>
+  </div>
+
+  <% form.number_field :step, value: 1 %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', internships_path %>
