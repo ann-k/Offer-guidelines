@@ -1,19 +1,26 @@
-<p id="notice"><%= notice %></p>
+<div class="card col-6 mr-auto ml-auto mt-5 mb-5">
+  <div class="card-body">
+    <% if notice != nil %>
+      <p class="alert alert-primary" id="notice"><%= notice %></p>
+    <% end %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @question.name %>
-</p>
+    <p>
+      Имя:
+      <%= @question.name %>
+    </p>
 
-<p>
-  <strong>Question:</strong>
-  <%= @question.question %>
-</p>
+    <p>
+      Вопрос:
+      <%= @question.question %>
+    </p>
 
-<p>
-  <strong>Contacts:</strong>
-  <%= @question.contacts %>
-</p>
+    <p>
+      Контакты:
+      <%= @question.contacts %>
+    </p>
 
-<%= link_to 'Edit', edit_question_path(@question) %> |
-<%= link_to 'Back', questions_path %>
+    <div class="d-flex justify-content-between mt-4 mb-3">
+      <%= link_to 'Назад', questions_path, :class => 'btn btn-outline-primary' %>
+    </div>
+  </div>
+</div>

@@ -1,66 +1,78 @@
-<p id="notice"><%= notice %></p>
+<div class="card col-6 mr-auto ml-auto mt-5 mb-5">
+  <div class="card-body">
+    <% if notice != nil %>
+      <p class="alert alert-primary" id="notice"><%= notice %></p>
+    <% end %>
 
-<p>
-  <strong>Email:</strong>
-  <%= @task.email %>
-</p>
+    <h5 class="card-title">О компании</h5>
 
-<p>
-  <strong>Company name:</strong>
-  <%= @task.company_name %>
-</p>
+    <p>
+      Название компании:
+      <%= @task.company_name %>
+    </p>
 
-<p>
-  <strong>Company specialty:</strong>
-  <%= @task.company_specialty %>
-</p>
+    <p>
+      Сфера деятельности компании:
+      <%= @task.company_specialty %>
+    </p>
 
-<p>
-  <strong>Company description:</strong>
-  <%= @task.company_description %>
-</p>
+    <p>
+      О компании:
+      <%= @task.company_description %>
+    </p>
 
-<p>
-  <strong>Social network link:</strong>
-  <%= @task.social_network_link %>
-</p>
+    <p>
+      Сайт/соцсети компании:
+      <%= @task.social_network_link %>
+    </p>
 
-<p>
-  <strong>Position:</strong>
-  <%= @task.position %>
-</p>
+    <h5 class="card-title">Техническое задание</h5>
 
-<p>
-  <strong>Task description:</strong>
-  <%= @task.task_description %>
-</p>
+    <p>
+      Нужен:
+      <%= @task.position %>
+    </p>
 
-<p>
-  <strong>Task materials:</strong>
-  <%= @task.task_materials %>
-</p>
+    <p>
+      Описание задания:
+      <%= @task.task_description %>
+    </p>
 
-<%= link_to "Download task materials", @task.task_materials_url %>
+    <p>
+      <%= link_to "Скачать материалы,", @task.task_materials_url %>
+      которые будут полезны при выполнении задания
+    </p>
 
-<p>
-  <strong>Deadline:</strong>
-  <%= @task.deadline %>
-</p>
+    <p>
+      Сроки выполнения задания:
+      <% if @task.deadline_none == true %>
+        <%= "Бессрочно" %>
+      <% else %>
+        <%= @task.deadline %>
+      <% end %>
+    </p>
 
-<p>
-  <strong>Salary:</strong>
-  <%= @task.salary %>
-</p>
+    <p>
+      Цена за выполнение задания:
+      <%= @task.salary %>
+    </p>
 
-<p>
-  <strong>Correction charge:</strong>
-  <%= @task.correction_charge %>
-</p>
+    <p>
+      Цена за правку:
+      <%= @task.correction_charge %>
+    </p>
 
-<p>
-  <strong>Barter:</strong>
-  <%= @task.barter %>
-</p>
+    <p>
+      Что предлагают вместо оплаты:
+      <%= @task.barter %>
+    </p>
 
-<%= link_to 'Edit', edit_task_path(@task) %> |
-<%= link_to 'Back', tasks_path %>
+    <div class="d-flex justify-content-between mt-4 mb-3">
+      <%= link_to 'Назад', tasks_path, :class => 'btn btn-outline-primary' %>
+      <div class="actions">
+        <%= link_to 'Редактировать', edit_task_path(@task), :class => 'btn btn-primary' %>
+        <%= link_to 'Закрыть вакансию', task_path(@task), :class => 'btn btn-dark' %>
+      </div>
+    </div>
+  </div>
+</div>

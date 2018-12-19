@@ -1,94 +1,109 @@
-<p id="notice"><%= notice %></p>
+<div class="card col-6 mr-auto ml-auto mt-5 mb-5">
+  <div class="card-body">
+    <% if notice != nil %>
+      <p class="alert alert-primary" id="notice"><%= notice %></p>
+    <% end %>
 
-<p>
-  <strong>Email:</strong>
-  <%= @internship.email %>
-</p>
+    <h5 class="card-title">О компании</h5>
 
-<p>
-  <strong>Company name:</strong>
-  <%= @internship.company_name %>
-</p>
+    <p>
+      Название компании:
+      <%= @internship.company_name %>
+    </p>
 
-<p>
-  <strong>Company specialty:</strong>
-  <%= @internship.company_specialty %>
-</p>
+    <p>
+      Сфера деятельности компании:
+      <%= @internship.company_specialty %>
+    </p>
 
-<p>
-  <strong>Company description:</strong>
-  <%= @internship.company_description %>
-</p>
+    <p>
+      О компании:
+      <%= @internship.company_description %>
+    </p>
 
-<p>
-  <strong>Social network link:</strong>
-  <%= @internship.social_network_link %>
-</p>
+    <p>
+      Сайт/соцсети компании:
+      <%= @internship.social_network_link %>
+    </p>
 
-<p>
-  <strong>Position:</strong>
-  <%= @internship.position %>
-</p>
+    <h5 class="card-title">Требования к работнику</h5>
 
-<p>
-  <strong>Places available:</strong>
-  <%= @internship.places_available %>
-</p>
+    <p>
+      На позицию:
+      <%= @internship.position %>
+    </p>
 
-<p>
-  <strong>Intern tasks:</strong>
-  <%= @internship.intern_tasks %>
-</p>
+    <p>
+      Количество мест:
+      <%= @internship.places_available %>
+    </p>
 
-<p>
-  <strong>Internship duration:</strong>
-  <%= @internship.internship_duration %>
-  <%= @internship.internship_duration_none %>
-</p>
+    <p>
+      Задачи стажера:
+      <%= @internship.intern_tasks %>
+    </p>
 
-<p>
-  <strong>Schedule:</strong>
-  <%= @internship.schedule %>
-</p>
+    <p>
+      Стажировка длится:
+      <%= @internship.internship_duration %>
+      <%= @internship.internship_duration_none %>
+    </p>
 
-<p>
-  <strong>Salary:</strong>
-  <%= @internship.salary %>
-  <%= @internship.salary_none %>
-</p>
+    <p>
+      Занятость:
+      <%= @internship.schedule %>
+    </p>
 
-<p>
-  <strong>Conditions:</strong>
-  <%= @internship.conditions %>
-</p>
+    <p>
+      Зарплата: от
+      <%= @internship.salary_min %>
+      до
+      <%= @internship.salary_max %>
+      рублей в месяц
+    </p>
 
-<p>
-  <strong>Application contacts:</strong>
-  <%= @internship.application_contacts %>
-</p>
+    <p>
+      Условия:
+      <%= @internship.conditions %>
+    </p>
 
-<p>
-  <strong>Application description:</strong>
-  <%= @internship.application_description %>
-</p>
+    <h5 class="card-title">Заявка</h5>
 
-<p>
-  <strong>Application materials:</strong>
-  <%= @internship.application_materials %>
-</p>
+    <p>
+      Заявку отправлять по адресу:
+      <%= @internship.application_contacts %>
+    </p>
 
-<%= link_to "Download application materials", @internship.application_materials_url %>
+    <p>
+      Описание заявки:
+      <%= @internship.application_description %>
+    </p>
 
-<p>
-  <strong>Deadline:</strong>
-  <%= @internship.deadline %>
-  <%= @internship.deadline_none %>
-</p>
+    <p>
+      <%= link_to "Скачать материалы,", @internship.application_materials_url %>
+      которые будут полезны при выполнении тестового задания
+    </p>
 
-<p>
-  <strong>Status:</strong>
-  <%= @internship.status %>
-</p>
+    <p>
+      Дедлайн для заявки:
+      <% if @internship.deadline_none == true %>
+        <%= "Бессрочно" %>
+      <% else %>
+        <%= @internship.deadline %>
+      <% end %>
+    </p>
 
-<%= link_to 'Edit', edit_internship_path(@internship) %> |
-<%= link_to 'Back', internships_path %>
+    <p>
+      Статус:
+      <%= @internship.status %>
+    </p>
+
+    <div class="d-flex justify-content-between mt-4 mb-3">
+      <%= link_to 'Назад', internships_path, :class => 'btn btn-outline-primary' %>
+      <div class="actions">
+        <%= link_to 'Редактировать', edit_internship_path(@internship), :class => 'btn btn-primary' %>
+        <%= link_to 'Закрыть стажировку', internship_path(@internship), :class => 'btn btn-dark' %>
+      </div>
+    </div>
+  </div>
+</div>

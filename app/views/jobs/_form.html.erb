@@ -40,10 +40,6 @@
     <%= form.text_field :social_network_link, :class => 'form-control' %>
   </div>
 
-  <div class="actions">
-    <%= form.submit 'Далее', :class => 'btn btn-primary' %>
-  </div>
-
   <h1>Требования к работнику</h1>
   <small id="h1Help" class="form-text text-muted mb-4">Максимально подробно опишите, что вы ожидаете от кандидата</small>
 
@@ -86,18 +82,21 @@
   </div>
 
   <div class="field form-group">
-    <%= form.label "Сколько получит ваш работник?" %>
-    <%= form.text_field :salary, :class => 'form-control' %>
+    <%= form.label "Сколько будет получать работник?" %>
+
+    <div class="form-group d-flex align-items-center">
+      <%= form.label "От", :class => 'col-sm-1'%>
+      <%= form.text_field :salary_min, :class => 'form-control col-sm-2', :placeholder => "10 000" %>
+
+      <%= form.label "До", :class => 'col-sm-1'%>
+      <%= form.text_field :salary_max, :class => 'form-control col-sm-2', :placeholder => "50 000" %>
+    </div>
   </div>
 
   <div class="field form-group">
     <%= form.label "Что предлагаете вы?" %>
     <%= form.text_area :conditions, :class => 'form-control', 'aria-label' => 'With textarea' %>
     <small id="conditionsHelp" class="form-text text-muted">Условия стажировки, возможность дальнейшего трудоустройства, офис, команда, плюшки.</small>
-  </div>
-
-  <div class="actions">
-    <%= form.submit 'Далее', :class => 'btn btn-primary' %>
   </div>
 
   <h1 class="mb-4">Заявка</h1>
@@ -131,7 +130,7 @@
         </div>
       </div>
       <div class="col">
-        <%= form.check_box :deadline_none, {}, "1", "0" %>
+        <%= form.check_box :deadline_none, {}, true, false %>
         <%= form.label "Бессрочно" %>
       </div>
     </div>
@@ -142,9 +141,10 @@
     <% form.number_field :status %>
   </div>
 
-  <div class="actions">
-    <%= form.submit 'Опубликовать вакансию', :class => 'btn btn-primary' %>
+  <div class="d-flex justify-content-between mt-4 mb-5">
+      <%= link_to 'Назад', jobs_path, :class => 'btn btn-outline-primary' %>
+      <div class="actions">
+        <%= form.submit 'Обновить вакансию', :class => 'btn btn-primary' %>
+      </div>
   </div>
-
-<%# btn btn-primary %>
 <% end %>

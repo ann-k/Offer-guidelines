@@ -1,6 +1,4 @@
-<h1>New Job</h1>
-
-<%= form_with(model: @job, local: true) do |form| %>
+<%= form_with(model: @job, local: true, :class => 'col-6 m-auto') do |form| %>
   <% if @job.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@job.errors.count, "error") %> prohibited this job from being saved:</h2>
@@ -13,52 +11,71 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :position %>
-    <%= form.text_field :position %>
+  <h1>Требования к работнику</h1>
+  <small id="h1Help" class="form-text text-muted mb-4">Максимально подробно опишите, что вы ожидаете от кандидата</small>
+
+  <div class="field form-group">
+    <%= form.label "На какую позицию?" %>
+    <%= form.text_field :position, :class => 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :places_available %>
-    <%= form.number_field :places_available %>
+  <div class="field form-group">
+    <%= form.label "Сколько человек вы ищете?" %>
+    <%= form.number_field :places_available, :class => 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :worker_tasks %>
-    <%= form.text_area :worker_tasks %>
+  <div class="field form-group">
+    <%= form.label "Что работник должен делать?" %>
+    <%= form.text_area :worker_tasks, :class => 'form-control', 'aria-label' => 'With textarea' %>
+    <small id="worker_tasksHelp" class="form-text text-muted">Опишите должность как можно подробнее, так студентам будет легче понять, что от них хотят.</small>
   </div>
 
-  <div class="field">
-    <%= form.label :special_requirements %>
-    <%= form.text_area :special_requirements %>
+  <div class="field form-group">
+    <%= form.label "Есть ли какие-то особые требования?" %>
+    <%= form.text_area :special_requirements, :class => 'form-control', 'aria-label' => 'With textarea' %>
+    <small id="special_requirementsHelp" class="form-text text-muted">Английский на уровне носителя, невероятная физическая сила, свой ноутбук, умение варить кофе? Опишите все особые требования здесь.</small>
   </div>
 
-  <div class="field">
-    <%= form.label :work_start_date %>
-    <%= form.date_select :work_start_date %>
+  <div class="field form-group flex-column">
+    <div>
+      <%= form.label "Когда приступать?" %>
+    </div>
+    <div class="row">
+      <div class="col">
+        <%= form.date_select :work_start_date %>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :schedule %>
-    <%= form.select :schedule, options_for_select([["Полная"], ["Частичная"], ["Удаленная"], ["Смешанная"]]), include_blank: true%>
+  <div class="field form-group">
+    <%= form.label "Занятость" %>
+    <%= form.select :schedule, options_for_select([["Полная"], ["Частичная"], ["Удаленная"], ["Смешанная"]]), {}, {:class => 'custom-select'} %>
   </div>
 
-  <div class="field">
-    <%= form.label :salary %>
-    <%= form.number_field :salary %>
+  <div class="field form-group">
+    <%= form.label "Сколько будет получать работник?" %>
+
+    <div class="form-group d-flex align-items-center">
+      <%= form.label "От", :class => 'col-sm-1'%>
+      <%= form.text_field :salary_min, :class => 'form-control col-sm-2', :placeholder => "10 000" %>
+
+      <%= form.label "До", :class => 'col-sm-1'%>
+      <%= form.text_field :salary_max, :class => 'form-control col-sm-2', :placeholder => "50 000" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :conditions %>
-    <%= form.text_area :conditions %>
+  <div class="field form-group">
+    <%= form.label "Что предлагаете вы?" %>
+    <%= form.text_area :conditions, :class => 'form-control', 'aria-label' => 'With textarea' %>
+    <small id="conditionsHelp" class="form-text text-muted">Условия стажировки, возможность дальнейшего трудоустройства, офис, команда, плюшки.</small>
   </div>
 
   <%= form.number_field :step, value: 2 %>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="d-flex justify-content-between mt-4 mb-5">
+      <%= link_to 'Назад', new_step_1_jobs_path, :class => 'btn btn-outline-primary' %>
+      <div class="actions">
+        <%= form.submit 'Далее', :class => 'btn btn-primary' %>
+      </div>
   </div>
 <% end %>
-
-
-<%= link_to 'Back', jobs_path %>

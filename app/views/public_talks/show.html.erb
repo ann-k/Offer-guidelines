@@ -1,24 +1,31 @@
-<p id="notice"><%= notice %></p>
+<div class="card col-6 mr-auto ml-auto mt-5 mb-5">
+  <div class="card-body">
+    <% if notice != nil %>
+      <p class="alert alert-primary" id="notice"><%= notice %></p>
+    <% end %>
 
-<p>
-  <strong>Theme:</strong>
-  <%= @public_talk.theme %>
-</p>
+    <p>
+      Тема лекции:
+      <%= @public_talk.theme %>
+    </p>
 
-<p>
-  <strong>Speaker:</strong>
-  <%= @public_talk.speaker %>
-</p>
+    <p>
+      Лектор:
+      <%= @public_talk.speaker %>
+    </p>
 
-<p>
-  <strong>Public talk date:</strong>
-  <%= @public_talk.public_talk_date %>
-</p>
+    <p>
+      Предполагаемая дата:
+      <%= @public_talk.public_talk_date %>
+    </p>
 
-<p>
-  <strong>Speaker contacts:</strong>
-  <%= @public_talk.speaker_contacts %>
-</p>
+    <p>
+      Контакты лектора:
+      <%= @public_talk.speaker_contacts %>
+    </p>
 
-<%= link_to 'Edit', edit_public_talk_path(@public_talk) %> |
-<%= link_to 'Back', public_talks_path %>
+    <div class="d-flex justify-content-between mt-4 mb-3">
+      <%= link_to 'Назад', public_talks_path, :class => 'btn btn-outline-primary' %>
+    </div>
+  </div>
+</div>

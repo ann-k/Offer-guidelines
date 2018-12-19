@@ -1,91 +1,108 @@
-<p id="notice"><%= notice %></p>
+<div class="card col-6 mr-auto ml-auto mt-5 mb-5">
+  <div class="card-body">
+    <% if notice != nil %>
+      <p class="alert alert-primary" id="notice"><%= notice %></p>
+    <% end %>
 
-<p>
-  <strong>Email:</strong>
-  <%= @job.email %>
-</p>
+    <h5 class="card-title">О компании</h5>
 
-<p>
-  <strong>Company name:</strong>
-  <%= @job.company_name %>
-</p>
+    <p>
+      Название компании:
+      <%= @job.company_name %>
+    </p>
 
-<p>
-  <strong>Company specialty:</strong>
-  <%= @job.company_specialty %>
-</p>
+    <p>
+      Сфера деятельности компании:
+      <%= @job.company_specialty %>
+    </p>
 
-<p>
-  <strong>Company description:</strong>
-  <%= @job.company_description %>
-</p>
+    <p>
+      О компании:
+      <%= @job.company_description %>
+    </p>
 
-<p>
-  <strong>Social network link:</strong>
-  <%= @job.social_network_link %>
-</p>
+    <p>
+      Сайт/соцсети компании:
+      <%= @job.social_network_link %>
+    </p>
 
-<p>
-  <strong>Position:</strong>
-  <%= @job.position %>
-</p>
+    <h5 class="card-title">Требования к работнику</h5>
 
-<p>
-  <strong>Places available:</strong>
-  <%= @job.places_available %>
-</p>
+    <p>
+      На позицию:
+      <%= @job.position %>
+    </p>
 
-<p>
-  <strong>Worker tasks:</strong>
-  <%= @job.worker_tasks %>
-</p>
+    <p>
+      Количество мест:
+      <%= @job.places_available %>
+    </p>
 
-<p>
-  <strong>Special requirements:</strong>
-  <%= @job.special_requirements %>
-</p>
+    <p>
+      Задачи работника:
+      <%= @job.worker_tasks %>
+    </p>
 
-<p>
-  <strong>Work start date:</strong>
-  <%= @job.work_start_date %>
-</p>
+    <p>
+      Особые требования:
+      <%= @job.special_requirements %>
+    </p>
 
-<p>
-  <strong>Schedule:</strong>
-  <%= @job.schedule %>
-</p>
+    <p>
+      Начало работы:
+      <%= @job.work_start_date %>
+    </p>
 
-<p>
-  <strong>Salary:</strong>
-  <%= @job.salary %>
-</p>
+    <p>
+      Занятость:
+      <%= @job.schedule %>
+    </p>
 
-<p>
-  <strong>Conditions:</strong>
-  <%= @job.conditions %>
-</p>
+    <p>
+      Зарплата: от
+      <%= @job.salary_min %>
+      до
+      <%= @job.salary_max %>
+      рублей в месяц
+    </p>
 
-<p>
-  <strong>Application contacts:</strong>
-  <%= @job.application_contacts %>
-</p>
+    <p>
+      Условия:
+      <%= @job.conditions %>
+    </p>
 
-<p>
-  <strong>Application description:</strong>
-  <%= @job.application_description %>
-</p>
+    <h5 class="card-title">Заявка</h5>
 
-<p>
-  <strong>Application materials:</strong>
-  <%= @job.application_materials %>
-</p>
+    <p>
+      Заявку отправлять по адресу:
+      <%= @job.application_contacts %>
+    </p>
 
-<%= link_to "Download application materials", @job.application_materials_url %>
+    <p>
+      Описание заявки:
+      <%= @job.application_description %>
+    </p>
 
-<p>
-  <strong>Deadline:</strong>
-  <%= @job.deadline %>
-</p>
+    <p>
+      <%= link_to "Скачать материалы,", @job.application_materials_url %>
+      которые будут полезны при выполнении тестового задания
+    </p>
 
-<%= link_to 'Edit', edit_job_path(@job) %> |
-<%= link_to 'Back', jobs_path %>
+    <p>
+      Дедлайн для заявки:
+      <% if @job.deadline_none == true %>
+        <%= "Бессрочно" %>
+      <% else %>
+        <%= @job.deadline %>
+      <% end %>
+    </p>
+
+    <div class="d-flex justify-content-between mt-4 mb-3">
+      <%= link_to 'Назад', jobs_path, :class => 'btn btn-outline-primary' %>
+      <div class="actions">
+        <%= link_to 'Редактировать', edit_job_path(@job), :class => 'btn btn-primary' %>
+        <%= link_to 'Закрыть вакансию', job_path(@job), :class => 'btn btn-dark' %>
+      </div>
+    </div>
+  </div>
+</div>

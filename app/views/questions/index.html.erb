@@ -1,31 +1,20 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Questions</h1>
+<div class="d-flex justify-content-between align-items-center col-8 mr-auto ml-auto mt-4 mb-5">
+  <h1 class="h1-index">Вопросы</h1>
+  <div class="actions">
+    <%= link_to 'Задать запрос', new_question_path, :class => 'btn btn-primary' %>
+  </div>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Question</th>
-      <th>Contacts</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @questions.each do |question| %>
-      <tr>
-        <td><%= question.name %></td>
-        <td><%= question.question %></td>
-        <td><%= question.contacts %></td>
-        <td><%= link_to 'Show', question %></td>
-        <td><%= link_to 'Edit', edit_question_path(question) %></td>
-        <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Question', new_question_path %>
+<div class="d-flex flex-wrap col-8 m-auto justify-content-between">
+  <% @questions.each do |question| %>
+    <div class="card mb-5" style="width: 27rem;">
+      <div class="card-body">
+        <p>Имя: <%= question.name %></p>
+        <p>Вопрос: <%= question.question %></p>
+        <p>Контакты: <%= question.contacts %></p>
+      </div>
+    </div>
+  <% end %>
+</div>

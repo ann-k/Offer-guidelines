@@ -1,6 +1,4 @@
-<h1>New Job</h1>
-
-<%= form_with(model: @job, local: true) do |form| %>
+<%= form_with(model: @job, local: true, :class => 'col-6 m-auto') do |form| %>
   <% if @job.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@job.errors.count, "error") %> prohibited this job from being saved:</h2>
@@ -13,32 +11,54 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :application_contacts %>
-    <%= form.text_field :application_contacts %>
+  <h1 class="mb-4">Заявка</h1>
+
+  <div class="field form-group">
+    <%= form.label "Куда отправить заявку?" %>
+    <%= form.text_field :application_contacts, :class => 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :application_description %>
-    <%= form.text_area :application_description %>
+  <div class="field form-group">
+    <%= form.label "Что нужно прислать?" %>
+    <%= form.text_area :application_description, :class => 'form-control', 'aria-label' => 'With textarea' %>
+    <small id="application_descriptionHelp" class="form-text text-muted">Что вам нужно: портфолио, резюме, тестовое задание или все вместе? Детально опишите требования.</small>
   </div>
 
-  <div class="field">
-    <%= form.label :application_materials %>
-    <%= form.file_field :application_materials %>
+  <div class="field form-group">
+    <%= form.label "Материалы, которые будут полезны при выполнении тестового задания"  %>
+    <%= form.file_field :application_materials, :type => 'file', :class => 'form-control-file' %>
+    <small id="application_materialsHelp" class="form-text text-muted">Если есть.</small>
   </div>
 
-  <div class="field">
-    <%= form.label :deadline %>
-    <%= form.date_select :deadline %>
+  <div class="field form-group flex-column">
+    <div>
+      <%= form.label "Дедлайн" %>
+    </div>
+    <div class="row">
+      <div class="input-group mb-3 col" id="datetimepicker1">
+        <%= form.text_field :deadline, :type => "text", :class => 'form-control' %>
+        <div class="input-group-append date">
+          <span class="input-group-text" id="basic-addon2">@</span>
+        </div>
+      </div>
+      <div class="col">
+        <%= form.check_box :deadline_none, {}, true, false %>
+        <%= form.label "Бессрочно" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="field form-group">
+    <% form.label :status %>
+    <% form.number_field :status %>
   </div>
 
   <%= form.number_field :step, value: 3 %>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="d-flex justify-content-between mt-4 mb-5">
+      <%= link_to 'Назад', new_step_2_job_path, :class => 'btn btn-outline-primary' %>
+      <div class="actions">
+        <%= form.submit 'Разместить вакансию', :class => 'btn btn-primary' %>
+      </div>
   </div>
 <% end %>
-
-
-<%= link_to 'Back', jobs_path %>

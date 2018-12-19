@@ -1,47 +1,74 @@
-<%= form_with(model: @internship, local: true) do |form| %>
-  <% if @internship.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@internship.errors.count, "error") %> prohibited this internship from being saved:</h2>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <%#= javascript_include_tag "daterangepicker_initializer.js" %>
+  </head>
+  <body>
+    <%= form_with(model: @internship, local: true, :class => 'col-6 m-auto') do |form| %>
+      <% if @internship.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@internship.errors.count, "error") %> prohibited this internship from being saved:</h2>
 
-      <ul>
-      <% @internship.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+          <ul>
+          <% @internship.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
+
+      <h1 class="mb-4">Заявка</h1>
+
+      <div class="field form-group">
+        <%= form.label "Куда отправить заявку?" %>
+        <%= form.text_field :application_contacts, :class => 'form-control' %>
+      </div>
+
+      <div class="field form-group">
+        <%= form.label "Что нужно прислать?" %>
+        <%= form.text_area :application_description, :class => 'form-control', 'aria-label' => 'With textarea' %>
+        <small id="application_descriptionHelp" class="form-text text-muted">Что вам нужно: портфолио, резюме, тестовое задание или все вместе? Детально опишите требования.</small>
+      </div>
+
+      <div class="field form-group">
+        <%= form.label "Материалы, которые будут полезны при выполнении тестового задания"  %>
+        <%= form.file_field :application_materials, :type => 'file', :class => 'form-control-file' %>
+        <small id="application_materialsHelp" class="form-text text-muted">Если есть.</small>
+      </div>
+
+      <div class="field form-group flex-column">
+        <div>
+          <%= form.label "Дедлайн" %>
+        </div>
+        <div class="row">
+          <div class="input-group mb-3 col" id="datetimepicker1">
+            <%= form.text_field :deadline, :type => "text", :class => 'form-control', :id => 'datetimepicker' %>
+            <div class="input-group-append date">
+              <span class="input-group-text" id="basic-addon2"></span>
+            </div>
+          </div>
+          <div class="col">
+            <%= form.check_box :deadline_none, {}, true, false %>
+            <%= form.label "Бессрочно" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="field form-group">
+        <% form.label :status %>
+        <% form.number_field :status %>
+      </div>
+
+      <%= form.number_field :step, value: 3 %>
+
+      <div class="d-flex justify-content-between mt-4 mb-5">
+          <%= link_to 'Назад', new_step_2_internship_path, :class => 'btn btn-outline-primary' %>
+          <div class="actions">
+            <%= form.submit 'Разместить стажировку', :class => 'btn btn-primary' %>
+          </div>
+      </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :application_contacts %>
-    <%= form.text_field :application_contacts %>
-  </div>
-
-  <div class="field">
-    <%= form.label :application_description %>
-    <%= form.text_area :application_description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :application_materials %>
-    <%= form.file_field :application_materials %>
-  </div>
-
-  <div class="field">
-    <%= form.label :deadline %>
-    <%= form.date_select :deadline %>
-  </div>
-
-  <div class="field">
-    <% form.label :status %>
-    <% form.number_field :status %>
-  </div>
-
-  <%= form.number_field :step, value: 3 %>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
-
-
-<%= link_to 'Back', internships_path %>
+  </body>
+</html>

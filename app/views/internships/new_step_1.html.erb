@@ -1,4 +1,4 @@
-<%= form_with(model: @internship, local: true) do |form| %>
+<%= form_with(model: @internship, local: true, :class => 'col-6 m-auto') do |form| %>
   <% if @internship.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@internship.errors.count, "error") %> prohibited this internship from being saved:</h2>
@@ -11,36 +11,41 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
+  <h1 class="mb-4">О компании</h1>
+
+  <div class="field form-group">
+    <%= form.label "Ваш email" %>
+    <%= form.text_field :email, :class => 'form-control' %>
+    <small id="emailHelp" class="form-text text-muted">Будьте внимательны. Редактировать или закрыть вакансию можно только по ссылке, высланной на этот адрес.</small>
   </div>
 
-  <div class="field">
-    <%= form.label :company_name %>
-    <%= form.text_field :company_name %>
+  <div class="field form-group">
+    <%= form.label "Название компании" %>
+    <%= form.text_field :company_name, :class => 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :company_specialty %>
-    <%= form.select :company_specialty, options_for_select([["IT"], ["Дизайн"], ["Искусство"], ["Развлечения"], ["Промышленность"], ["Маркетинг"]]), include_blank: true%>
+  <div class="field form-group">
+    <%= form.label "Сфера деятельности компании" %>
+    <%= form.select :company_specialty, options_for_select([["IT"], ["Дизайн"], ["Искусство"], ["Развлечения"], ["Промышленность"], ["Маркетинг"]]), {}, {:class => 'custom-select'}%>
   </div>
 
-  <div class="field">
-    <%= form.label :company_description %>
-    <%= form.text_area :company_description %>
+  <div class="field form-group">
+    <%= form.label "Опишите компанию" %>
+    <%= form.text_area :company_description, :class => 'form-control', 'aria-label' => 'With textarea' %>
+    <small id="company_descriptionHelp" class="form-text text-muted">Перечислите особенности вашей компании, клиенты, проекты. Почему студентам стоит выбрать именно вас?</small>
   </div>
 
-  <div class="field">
-    <%= form.label :social_network_link %>
-    <%= form.text_field :social_network_link %>
+  <div class="field form-group">
+    <%= form.label "Сайт/соцсети компании" %>
+    <%= form.text_field :social_network_link, :class => 'form-control' %>
   </div>
 
-  <% form.number_field :step, value: 1 %>
+  <%= form.number_field :step, value: 1 %>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="d-flex justify-content-between mt-4 mb-5">
+      <%= link_to 'Назад', internships_path, :class => 'btn btn-outline-primary' %>
+      <div class="actions">
+        <%= form.submit 'Далее', :class => 'btn btn-primary' %>
+      </div>
   </div>
 <% end %>
-
-<%= link_to 'Back', internships_path %>

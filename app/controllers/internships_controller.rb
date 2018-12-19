@@ -69,7 +69,11 @@ class InternshipsController < ApplicationController
 
     respond_to do |format|
       if @internship.update(internship_params)
-        format.html { redirect_to redirect_url, notice: 'Internship was successfully updated.' }
+        if params[:internship][:step].to_i == 3
+          format.html { redirect_to redirect_url, notice: 'Стажировка создана!' }
+        else
+          format.html { redirect_to redirect_url, notice: 'Стажировка обновлена!' }
+        end
         format.json { render :show, status: :ok, location: @internship }
       else
         format.html { render :edit }
@@ -96,6 +100,6 @@ class InternshipsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def internship_params
-      params.require(:internship).permit(:email, :company_name, :company_specialty, :company_description, :social_network_link, :position, :places_available, :intern_tasks, :internship_duration, :internship_duration_none, :schedule, :string, :salary, :conditions, :application_contacts, :application_description, :application_materials, :deadline)
+      params.require(:internship).permit(:email, :company_name, :company_specialty, :company_description, :social_network_link, :position, :places_available, :intern_tasks, :internship_duration, :internship_duration_none, :schedule, :string, :salary_min, :salary_max, :conditions, :application_contacts, :application_description, :application_materials, :deadline, :deadline_none, :step)
     end
 end

@@ -58,7 +58,11 @@ class JobsController < ApplicationController
 
     respond_to do |format|
       if @job.update(job_params)
-        format.html { redirect_to redirect_url, notice: 'Job was successfully updated.' }
+        if params[:job][:step].to_i == 3
+          format.html { redirect_to redirect_url, notice: 'Вакансия создана!' }
+        else
+          format.html { redirect_to redirect_url, notice: 'Вакансия обновлена!' }
+        end
         format.json { render :show, status: :ok, location: @job }
       else
         format.html { render :edit }
@@ -86,6 +90,6 @@ class JobsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def job_params
-      params.require(:job).permit(:email, :company_name, :company_specialty, :company_description, :social_network_link, :position, :places_available, :worker_tasks, :special_requirements, :work_start_date, :schedule, :salary, :conditions, :application_contacts, :application_description, :application_materials, :deadline, :step)
+      params.require(:job).permit(:email, :company_name, :company_specialty, :company_description, :social_network_link, :position, :places_available, :worker_tasks, :special_requirements, :work_start_date, :schedule, :salary_min, :salary_max, :conditions, :application_contacts, :application_description, :application_materials, :deadline, :deadline_none, :step)
     end
 end

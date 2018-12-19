@@ -1,10 +1,10 @@
-<%= form_with(model: task, local: true, :class => 'col-6 m-auto') do |form| %>
-  <% if task.errors.any? %>
+<%= form_with(model: @task, local: true, :class => 'col-6 m-auto') do |form| %>
+  <% if @task.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
+      <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
 
       <ul>
-      <% task.errors.full_messages.each do |message| %>
+      <% @task.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -40,10 +40,6 @@
     <%= form.text_field :social_network_link, :class => 'form-control' %>
   </div>
 
-  <div class="actions">
-    <%= form.submit 'Далее', :class => 'btn btn-primary' %>
-  </div>
-
   <h1>Техническое задание</h1>
   <small id="h1Help" class="form-text text-muted mb-4">Максимально подробно опишите, что именно вы ожидаете получить.</small>
 
@@ -76,16 +72,10 @@
         </div>
       </div>
       <div class="col">
-        <%= form.check_box :deadline_none, {}, "1", "0" %>
+        <%= form.check_box :deadline_none, {}, true, false %>
         <%= form.label "Бессрочно" %>
       </div>
     </div>
-  </div>
-
-  <div class="field form-group">
-    <%= form.label "Хотите предложить что-то помимо оплаты?" %>
-    <%= form.text_area :barter, :class => 'form-control', 'aria-label' => 'With textarea' %>
-    <small id="barterHelp" class="form-text text-muted">Возможно вы готовы добавить имя исполнителя в качестве соавторов вашего проекта или хотите подарить экземпляр сверстанной им книги? Пишите об этом здесь.</small>
   </div>
 
   <div class="field form-group">
@@ -98,9 +88,16 @@
     <%= form.text_field :correction_charge, :class => 'form-control' %>
   </div>
 
-  <% form.number_field :step, value: 1 %>
+  <div class="field form-group">
+    <%= form.label "Хотите предложить что-то помимо оплаты?" %>
+    <%= form.text_area :barter, :class => 'form-control', 'aria-label' => 'With textarea' %>
+    <small id="barterHelp" class="form-text text-muted">Возможно вы готовы добавить имя исполнителя в качестве соавторов вашего проекта или хотите подарить экземпляр сверстанной им книги? Пишите об этом здесь.</small>
+  </div>
 
-  <div class="actions">
-    <%= form.submit 'Разместить задание', :class => 'btn btn-primary' %>
+  <div class="d-flex justify-content-between mt-4 mb-5">
+      <%= link_to 'Назад', tasks_path, :class => 'btn btn-outline-primary' %>
+      <div class="actions">
+        <%= form.submit 'Обновить задание', :class => 'btn btn-primary' %>
+      </div>
   </div>
 <% end %>

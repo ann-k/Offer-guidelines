@@ -33,7 +33,10 @@
     <%= form.text_field :speaker_contacts, :class => 'form-control' %>
   </div>
 
-  <div class="actions">
-    <%= form.submit 'Отправить запрос', :class => 'btn btn-primary' %>
+  <div class="d-flex justify-content-between mt-4 mb-5">
+      <%= link_to 'Назад', public_talks_path, :class => 'btn btn-outline-primary' %>
+      <div class="actions">
+        <%= form.submit 'Отправить запрос', :class => 'btn btn-primary' %>
+      </div>
   </div>
 <% end %>

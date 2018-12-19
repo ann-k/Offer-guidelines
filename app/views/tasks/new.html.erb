@@ -1,5 +1,51 @@
-<%# <h1>New Task</h1> %>
+<%= form_with(model: @task, local: true, :class => 'col-6 m-auto') do |form| %>
+  <% if @task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
 
-<%= render 'form', task: @task %>
+      <ul>
+      <% @task.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-<%= link_to 'Back', tasks_path %>
+  <h1 class="mb-4">О компании</h1>
+
+  <div class="field form-group">
+    <%= form.label "Ваш email" %>
+    <%= form.text_field :email, :class => 'form-control' %>
+    <small id="emailHelp" class="form-text text-muted">Будьте внимательны. Редактировать или закрыть вакансию можно только по ссылке, высланной на этот адрес.</small>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label "Название компании" %>
+    <%= form.text_field :company_name, :class => 'form-control' %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label "Сфера деятельности компании" %>
+    <%= form.select :company_specialty, options_for_select([["IT"], ["Дизайн"], ["Искусство"], ["Развлечения"], ["Промышленность"], ["Маркетинг"]]), {}, {:class => 'custom-select'}%>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label "Опишите компанию" %>
+    <%= form.text_area :company_description, :class => 'form-control', 'aria-label' => 'With textarea' %>
+    <small id="company_descriptionHelp" class="form-text text-muted">Перечислите особенности вашей компании, клиенты, проекты. Почему студентам стоит выбрать именно вас?</small>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label "Сайт/соцсети компании" %>
+    <%= form.text_field :social_network_link, :class => 'form-control' %>
+  </div>
+
+  <% form.number_field :step, value: 1 %>
+
+  <div class="d-flex justify-content-between mt-4 mb-5">
+    <%= link_to 'Назад', tasks_path, :class => 'btn btn-outline-primary' %>
+    <div class="actions">
+      <%= form.submit 'Далее', :class => 'btn btn-primary' %>
+    </div>
+  </div>
+<% end %>

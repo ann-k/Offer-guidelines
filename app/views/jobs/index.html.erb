@@ -1,60 +1,33 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Jobs</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Email</th>
-      <th>Company name</th>
-      <th>Company specialty</th>
-      <th>Company description</th>
-      <th>Social network link</th>
-      <th>Position</th>
-      <th>Places available</th>
-      <th>Worker tasks</th>
-      <th>Special requirements</th>
-      <th>Work start date</th>
-      <th>Schedule</th>
-      <th>Salary</th>
-      <th>Conditions</th>
-      <th>Application contacts</th>
-      <th>Application description</th>
-      <th>Application materials</th>
-      <th>Deadline</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @jobs.each do |job| %>
-      <tr>
-        <td><%= job.email %></td>
-        <td><%= job.company_name %></td>
-        <td><%= job.company_specialty %></td>
-        <td><%= job.company_description %></td>
-        <td><%= job.social_network_link %></td>
-        <td><%= job.position %></td>
-        <td><%= job.places_available %></td>
-        <td><%= job.worker_tasks %></td>
-        <td><%= job.special_requirements %></td>
-        <td><%= job.work_start_date %></td>
-        <td><%= job.schedule %></td>
-        <td><%= job.salary %></td>
-        <td><%= job.conditions %></td>
-        <td><%= job.application_contacts %></td>
-        <td><%= job.application_description %></td>
-        <td><%= job.application_materials %></td>
-        <td><%= job.deadline %></td>
-        <td><%= link_to 'Show', job %></td>
-        <td><%= link_to 'Edit', edit_job_path(job) %></td>
-        <td><%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
+<div class="d-flex justify-content-between align-items-center col-9 mr-auto ml-auto mt-4 mb-5">
+  <h1 class="h1-index">Вакансии</h1>
+  <div class="actions">
+    <%= link_to 'Разместить вакансию', new_step_1_jobs_path, :class => 'btn btn-primary' %>
+  </div>
+</div>
 
 
-<%= link_to 'New Job', new_step_1_jobs_path %>
+<div class="d-flex flex-wrap col-9 m-auto justify-content-between">
+  <% @jobs.each do |job| %>
+    <div class="card mb-5" style="width: 18rem;">
+      <div class="card-body">
+        <p>Название компании: <%= job.company_name %></p>
+        <p>На позицию: <%= job.position %></p>
+        <p>Занятость: <%= job.schedule %></p>
+        <p>Зарплата: от <%= job.salary_min %> до <%= job.salary_max %> рублей в месяц</p>
+        <p>Дедлайн заявки:
+          <% if job.deadline_none == true %>
+            <%= "Бессрочно" %>
+          <% else %>
+            <%= job.deadline %>
+          <% end %>
+        </p>
+
+        <div class="actions">
+          <%= link_to 'Подробнее', job, :class => 'btn btn-outline-primary' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -24,11 +24,14 @@
   </div>
 
   <div class="field form-group">
-    <%= form.label "Обратная связь" %>
+    <%= form.label "Ваши контакты" %>
     <%= form.text_field :contacts, :class => 'form-control' %>
   </div>
 
-  <div class="actions">
-    <%= form.submit 'Задать вопрос', :class => 'btn btn-primary' %>
+  <div class="d-flex justify-content-between mt-4 mb-5">
+      <%= link_to 'Назад', questions_path, :class => 'btn btn-outline-primary' %>
+      <div class="actions">
+        <%= form.submit 'Задать вопрос', :class => 'btn btn-primary' %>
+      </div>
   </div>
 <% end %>

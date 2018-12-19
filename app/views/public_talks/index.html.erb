@@ -1,33 +1,21 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Public Talks</h1>
+<div class="d-flex justify-content-between align-items-center col-8 mr-auto ml-auto mt-4 mb-5">
+  <h1 class="h1-index">Запросы на гостевые лекции</h1>
+  <div class="actions">
+    <%= link_to 'Отправить запрос', new_public_talk_path, :class => 'btn btn-primary' %>
+  </div>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Theme</th>
-      <th>Speaker</th>
-      <th>Public talk date</th>
-      <th>Speaker contacts</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @public_talks.each do |public_talk| %>
-      <tr>
-        <td><%= public_talk.theme %></td>
-        <td><%= public_talk.speaker %></td>
-        <td><%= public_talk.public_talk_date %></td>
-        <td><%= public_talk.speaker_contacts %></td>
-        <td><%= link_to 'Show', public_talk %></td>
-        <td><%= link_to 'Edit', edit_public_talk_path(public_talk) %></td>
-        <td><%= link_to 'Destroy', public_talk, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Public Talk', new_public_talk_path %>
+<div class="d-flex flex-wrap col-8 m-auto justify-content-between">
+  <% @public_talks.each do |public_talk| %>
+    <div class="card mb-5" style="width: 27rem;">
+      <div class="card-body">
+        <p>Тема лекции: <%= public_talk.theme %></p>
+        <p>Лектор: <%= public_talk.speaker %></p>
+        <p>Предполагаемая дата: <%= public_talk.public_talk_date %></p>
+        <p>Контакты лектора: <%= public_talk.speaker_contacts %></p>
+      </div>
+    </div>
+  <% end %>
+</div>
