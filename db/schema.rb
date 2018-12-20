@@ -31,10 +31,10 @@ ActiveRecord::Schema.define(version: 2018_12_20_182006) do
     t.datetime "updated_at", null: false
     t.string "status"
     t.string "email"
+    t.integer "step"
     t.boolean "internship_duration_none"
     t.boolean "deadline_none"
     t.boolean "salary_none"
-    t.integer "step"
     t.integer "salary_min"
     t.integer "salary_max"
   end

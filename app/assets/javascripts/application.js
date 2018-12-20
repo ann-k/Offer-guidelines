@@ -17,6 +17,4 @@
 //= require jquery
 //= require popper
 //= require bootstrap
-//= require moment
-//= require daterangepicker
 //= require_tree .
