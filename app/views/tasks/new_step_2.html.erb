@@ -15,20 +15,25 @@
   <small id="h1Help" class="form-text text-muted mb-4">Максимально подробно опишите, что именно вы ожидаете получить.</small>
 
   <div class="field form-group">
-    <%= form.label "Какой специалист вам нужен?" %>
+    <%= form.label "Какой специалист вам нужен? *" %>
     <%= form.text_field :position, :class => 'form-control' %>
   </div>
 
   <div class="field form-group">
-    <%= form.label "Что нужно сделать?" %>
+    <%= form.label "Что нужно сделать? *" %>
     <%= form.text_area :task_description, :class => 'form-control', 'aria-label' => 'With textarea' %>
     <small id="task_descriptionHelp" class="form-text text-muted">Опишите техническое задание и ваши ожидания здесь.</small>
   </div>
 
+  <%= form.label "Материалы, которые будут полезны при выполнении тестового задания"  %>
   <div class="field form-group">
-    <%= form.label "Материалы, которые будут полезны при выполнении тестового задания"  %>
-    <%= form.file_field :task_materials, :type => 'file', :class => 'form-control-file' %>
-    <small id="task_materialsHelp" class="form-text text-muted">Если есть.</small>
+    <div class="input-group">
+      <div class="custom-file">
+        <%= form.file_field :task_materials, :type => 'file', :class => 'custom-file-input', :id => 'inputGroupFile01', 'aria-label' => 'inputGroupFileAddon01', :style => 'cursor: pointer;' %>
+        <label class="custom-file-label" for="inputGroupFile01">Выберите файл</label>
+      </div>
+    </div>
+    <small id="application_materialsHelp" class="form-text text-muted">Если есть.</small>
   </div>
 
   <%= form.label "Сроки выполнения задания" %>
@@ -51,12 +56,12 @@
   </div>
 
   <div class="field form-group">
-    <%= form.label "Сколько вы заплатите за выполнение?" %>
+    <%= form.label "Сколько вы заплатите за выполнение? *" %>
     <%= form.text_field :salary, :class => 'form-control' %>
   </div>
 
   <div class="field form-group">
-    <%= form.label "Сколько стоит дополнительная правка?" %>
+    <%= form.label "Сколько стоит дополнительная правка? *" %>
     <%= form.text_field :correction_charge, :class => 'form-control' %>
   </div>
 

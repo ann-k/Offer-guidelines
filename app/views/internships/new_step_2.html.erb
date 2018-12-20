@@ -15,7 +15,7 @@
   <small id="h1Help" class="form-text text-muted mb-4">Максимально подробно опишите, что вы ожидаете от кандидата</small>
 
   <div class="field form-group">
-    <%= form.label "На какую позицию?" %>
+    <%= form.label "На какую позицию? *" %>
     <%= form.text_field :position, :class => 'form-control' %>
   </div>
 
@@ -25,7 +25,7 @@
   </div>
 
   <div class="field form-group">
-    <%= form.label "Что стажер должен делать?" %>
+    <%= form.label "Что стажер должен делать? *" %>
     <%= form.text_area :intern_tasks, :class => 'form-control', 'aria-label' => 'With textarea' %>
     <small id="intern_tasksHelp" class="form-text text-muted">Опишите как можно подробнее задачи стажера, так студентам будет легче понять, что от них хотят.</small>
   </div>
@@ -46,7 +46,7 @@
   </div>
 
   <div class="field form-group">
-    <%= form.label "Занятость" %>
+    <%= form.label "Занятость *" %>
     <%= form.select :schedule, options_for_select([["Полная"], ["Частичная"], ["Удаленная"], ["Смешанная"]]), {}, {:class => 'custom-select'} %>
   </div>
 

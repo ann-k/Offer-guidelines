@@ -14,13 +14,13 @@
   <h1 class="mb-4">О компании</h1>
 
   <div class="field form-group">
-    <%= form.label "Ваш email" %>
+    <%= form.label "Ваш email *" %>
     <%= form.text_field :email, :class => 'form-control' %>
     <small id="emailHelp" class="form-text text-muted">Будьте внимательны. Редактировать или закрыть вакансию можно только по ссылке, высланной на этот адрес.</small>
   </div>
 
   <div class="field form-group">
-    <%= form.label "Название компании" %>
+    <%= form.label "Название компании *" %>
     <%= form.text_field :company_name, :class => 'form-control' %>
   </div>
 
@@ -44,7 +44,7 @@
   <small id="h1Help" class="form-text text-muted mb-4">Максимально подробно опишите, что вы ожидаете от кандидата</small>
 
   <div class="field form-group">
-    <%= form.label "На какую позицию?" %>
+    <%= form.label "На какую позицию? *" %>
     <%= form.text_field :position, :class => 'form-control' %>
   </div>
 
@@ -54,7 +54,7 @@
   </div>
 
   <div class="field form-group">
-    <%= form.label "Что стажер должен делать?" %>
+    <%= form.label "Что стажер должен делать? *" %>
     <%= form.text_area :intern_tasks, :class => 'form-control', 'aria-label' => 'With textarea' %>
     <small id="intern_tasksHelp" class="form-text text-muted">Опишите как можно подробнее задачи стажера, так студентам будет легче понять, что от них хотят.</small>
   </div>
@@ -75,7 +75,7 @@
   </div>
 
   <div class="field form-group">
-    <%= form.label "Занятость" %>
+    <%= form.label "Занятость *" %>
     <%= form.select :schedule, options_for_select([["Полная"], ["Частичная"], ["Удаленная"], ["Смешанная"]]), {}, {:class => 'custom-select'} %>
   </div>
 
@@ -106,7 +106,7 @@
   <h1 class="mb-4">Заявка</h1>
 
   <div class="field form-group">
-    <%= form.label "Куда отправить заявку?" %>
+    <%= form.label "Куда отправить заявку? *" %>
     <%= form.text_field :application_contacts, :class => 'form-control' %>
   </div>
 
@@ -116,9 +116,14 @@
     <small id="application_descriptionHelp" class="form-text text-muted">Что вам нужно: портфолио, резюме, тестовое задание или все вместе? Детально опишите требования.</small>
   </div>
 
+  <%= form.label "Материалы, которые будут полезны при выполнении тестового задания"  %>
   <div class="field form-group">
-    <%= form.label "Материалы, которые будут полезны при выполнении тестового задания"  %>
-    <%= form.file_field :application_materials, :type => 'file', :class => 'form-control-file' %>
+    <div class="input-group">
+      <div class="custom-file">
+        <%= form.file_field :application_materials, :type => 'file', :class => 'custom-file-input', :id => 'inputGroupFile01', 'aria-label' => 'inputGroupFileAddon01', :style => 'cursor: pointer;' %>
+        <label class="custom-file-label" for="inputGroupFile01">Выберите файл</label>
+      </div>
+    </div>
     <small id="application_materialsHelp" class="form-text text-muted">Если есть.</small>
   </div>
 

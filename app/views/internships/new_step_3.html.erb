@@ -22,7 +22,7 @@
       <h1 class="mb-4">Заявка</h1>
 
       <div class="field form-group">
-        <%= form.label "Куда отправить заявку?" %>
+        <%= form.label "Куда отправить заявку? *" %>
         <%= form.text_field :application_contacts, :class => 'form-control' %>
       </div>
 
@@ -32,9 +32,14 @@
         <small id="application_descriptionHelp" class="form-text text-muted">Что вам нужно: портфолио, резюме, тестовое задание или все вместе? Детально опишите требования.</small>
       </div>
 
+      <%= form.label "Материалы, которые будут полезны при выполнении тестового задания"  %>
       <div class="field form-group">
-        <%= form.label "Материалы, которые будут полезны при выполнении тестового задания"  %>
-        <%= form.file_field :application_materials, :type => 'file', :class => 'form-control-file' %>
+        <div class="input-group">
+          <div class="custom-file">
+            <%= form.file_field :application_materials, :type => 'file', :class => 'custom-file-input', :id => 'inputGroupFile01', 'aria-label' => 'inputGroupFileAddon01', :style => 'cursor: pointer;' %>
+            <label class="custom-file-label" for="inputGroupFile01">Выберите файл</label>
+          </div>
+        </div>
         <small id="application_materialsHelp" class="form-text text-muted">Если есть.</small>
       </div>
 

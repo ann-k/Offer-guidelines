@@ -20,3 +20,7 @@ textarea.form-control {
 .input-group {
   padding-left: 0;
 }
+
+.custom-file-label::after {
+  content: "Обзор";
+}
