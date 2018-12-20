@@ -33,14 +33,16 @@
   <%= form.label "Дедлайн" %>
   <div class="field form-group">
     <div class="d-flex justify-content-between">
-      <div class="input-group col-9" id="datetimepicker1">
-        <%= form.text_field :deadline, :type => "text", :class => 'form-control' %>
-        <div class="input-group-append date">
-          <span class="input-group-text" id="basic-addon2">@</span>
-        </div>
+      <div class="input-group col">
+        <%= date_select :job, :deadline,
+                 {
+                  :order => [:day, :month, :year],
+                  :start_year => 2018,
+                  :end_year => 2030
+                 },
+                 {:class => "custom-select"}  %>
       </div>
-
-      <div class="col-3">
+      <div>
         <%= form.check_box :deadline_none, {}, true, false %>
         <%= form.label "Бессрочно" %>
       </div>

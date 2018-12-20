@@ -60,18 +60,19 @@
     <small id="task_materialsHelp" class="form-text text-muted">Если есть.</small>
   </div>
 
-  <div class="field form-group flex-column">
-    <div>
-      <%= form.label "Сроки выполнения задания" %>
-    </div>
-    <div class="row">
-      <div class="input-group mb-3 col" id="datetimepicker1">
-        <%= form.text_field :deadline, :type => "text", :class => 'form-control' %>
-        <div class="input-group-append date">
-          <span class="input-group-text" id="basic-addon2">@</span>
-        </div>
+  <%= form.label "Сроки выполнения задания" %>
+  <div class="field form-group">
+    <div class="d-flex justify-content-between">
+      <div class="input-group col">
+        <%= date_select :task, :deadline,
+                 {
+                  :order => [:day, :month, :year],
+                  :start_year => 2018,
+                  :end_year => 2030
+                 },
+                 {:class => "custom-select"}  %>
       </div>
-      <div class="col">
+      <div>
         <%= form.check_box :deadline_none, {}, true, false %>
         <%= form.label "Бессрочно" %>
       </div>

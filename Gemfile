@@ -7,6 +7,7 @@ ruby '2.5.3'
 gem 'rails', '~> 5.2.1'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
+# gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -44,9 +45,6 @@ gem 'jquery-rails'
 gem 'wicked'
 
 gem 'carrierwave', '~> 1.0'
-
-gem 'momentjs-rails'
-gem 'bootstrap-daterangepicker-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

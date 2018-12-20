@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_19_131520) do
+ActiveRecord::Schema.define(version: 2018_12_20_182006) do
 
   create_table "internships", force: :cascade do |t|
     t.string "company_name"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2018_12_19_131520) do
     t.string "position"
     t.integer "places_available"
     t.text "intern_tasks"
-    t.date "internship_duration"
+    t.string "internship_duration"
     t.string "schedule"
     t.text "conditions"
     t.string "application_contacts"

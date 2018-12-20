@@ -65,14 +65,16 @@
     <small id="special_requirementsHelp" class="form-text text-muted">Английский на уровне носителя, невероятная физическая сила, свой ноутбук, умение варить кофе? Опишите все особые требования здесь.</small>
   </div>
 
-  <div class="field form-group flex-column">
-    <div>
-      <%= form.label "Когда приступать?" %>
-    </div>
-    <div class="row">
-      <div class="col">
-        <%= form.date_select :work_start_date %>
-      </div>
+  <%= form.label "Когда приступать?" %>
+  <div class="field form-group">
+    <div class="input-group col-8">
+      <%= date_select :task, :work_start_date,
+               {
+                :order => [:day, :month, :year],
+                :start_year => 2018,
+                :end_year => 2030
+               },
+               {:class => "custom-select"}  %>
     </div>
   </div>
 
@@ -118,18 +120,19 @@
     <small id="application_materialsHelp" class="form-text text-muted">Если есть.</small>
   </div>
 
-  <div class="field form-group flex-column">
-    <div>
-      <%= form.label "Дедлайн" %>
-    </div>
-    <div class="row">
-      <div class="input-group mb-3 col" id="datetimepicker1">
-        <%= form.text_field :deadline, :type => "text", :class => 'form-control' %>
-        <div class="input-group-append date">
-          <span class="input-group-text" id="basic-addon2">@</span>
-        </div>
+  <%= form.label "Дедлайн" %>
+  <div class="field form-group">
+    <div class="d-flex justify-content-between">
+      <div class="input-group col">
+        <%= date_select :job, :deadline,
+                 {
+                  :order => [:day, :month, :year],
+                  :start_year => 2018,
+                  :end_year => 2030
+                 },
+                 {:class => "custom-select"}  %>
       </div>
-      <div class="col">
+      <div>
         <%= form.check_box :deadline_none, {}, true, false %>
         <%= form.label "Бессрочно" %>
       </div>
