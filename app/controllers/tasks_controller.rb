@@ -36,7 +36,7 @@ class TasksController < ApplicationController
     respond_to do |format|
       if @task.save
         # if params[:internship][:step].to_i == 1
-          format.html { redirect_to new_step_2_task_path(@task), notice: 'Task was successfully created.' }
+          format.html { redirect_to new_step_2_task_path(@task), notice: 'Задача создана!' }
         # end
         format.json { render :show, status: :created, location: @task }
       else
@@ -69,7 +69,7 @@ class TasksController < ApplicationController
   def destroy
     @task.destroy
     respond_to do |format|
-      format.html { redirect_to tasks_url, notice: 'Task was successfully destroyed.' }
+      format.html { redirect_to tasks_url, notice: 'Задача удалена.' }
       format.json { head :no_content }
     end
   end

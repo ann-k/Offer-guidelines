@@ -28,7 +28,7 @@ class PublicTalksController < ApplicationController
 
     respond_to do |format|
       if @public_talk.save
-        format.html { redirect_to @public_talk, notice: 'Public talk was successfully created.' }
+        format.html { redirect_to @public_talk, notice: 'Ваша заявка отправлена!' }
         format.json { render :show, status: :created, location: @public_talk }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class PublicTalksController < ApplicationController
   def update
     respond_to do |format|
       if @public_talk.update(public_talk_params)
-        format.html { redirect_to @public_talk, notice: 'Public talk was successfully updated.' }
+        format.html { redirect_to @public_talk, notice: 'Ваша заявка изменена!' }
         format.json { render :show, status: :ok, location: @public_talk }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class PublicTalksController < ApplicationController
   def destroy
     @public_talk.destroy
     respond_to do |format|
-      format.html { redirect_to public_talks_url, notice: 'Public talk was successfully destroyed.' }
+      format.html { redirect_to public_talks_url, notice: 'Ваша заявка удалена.' }
       format.json { head :no_content }
     end
   end
