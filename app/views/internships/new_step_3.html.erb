@@ -61,7 +61,8 @@
         <% form.number_field :status %>
       </div>
 
-      <%= form.number_field :step, value: 3 %>
+      <%#= form.number_field :step, value: 3 %>
+      <%= form.hidden_field :step, value: 3 %>
 
       <div class="d-flex justify-content-between mt-4 mb-5">
           <%= link_to 'Назад', new_step_2_internship_path, :class => 'btn btn-outline-primary' %>

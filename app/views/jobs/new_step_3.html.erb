@@ -30,18 +30,17 @@
     <small id="application_materialsHelp" class="form-text text-muted">Если есть.</small>
   </div>
 
-  <div class="field form-group flex-column">
-    <div>
-      <%= form.label "Дедлайн" %>
-    </div>
-    <div class="row">
-      <div class="input-group mb-3 col" id="datetimepicker1">
+  <%= form.label "Дедлайн" %>
+  <div class="field form-group">
+    <div class="d-flex justify-content-between">
+      <div class="input-group col-9" id="datetimepicker1">
         <%= form.text_field :deadline, :type => "text", :class => 'form-control' %>
         <div class="input-group-append date">
           <span class="input-group-text" id="basic-addon2">@</span>
         </div>
       </div>
-      <div class="col">
+
+      <div class="col-3">
         <%= form.check_box :deadline_none, {}, true, false %>
         <%= form.label "Бессрочно" %>
       </div>
@@ -53,7 +52,8 @@
     <% form.number_field :status %>
   </div>
 
-  <%= form.number_field :step, value: 3 %>
+  <%#= form.number_field :step, value: 3 %>
+  <%= form.hidden_field :step, value: 3 %>
 
   <div class="d-flex justify-content-between mt-4 mb-5">
       <%= link_to 'Назад', new_step_2_job_path, :class => 'btn btn-outline-primary' %>

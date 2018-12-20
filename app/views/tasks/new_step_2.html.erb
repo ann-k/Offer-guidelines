@@ -65,7 +65,8 @@
     <small id="barterHelp" class="form-text text-muted">Возможно вы готовы добавить имя исполнителя в качестве соавторов вашего проекта или хотите подарить экземпляр сверстанной им книги? Пишите об этом здесь.</small>
   </div>
 
-  <% form.number_field :step, value: 2 %>
+  <%# form.number_field :step, value: 2 %>
+  <%= form.hidden_field :step, value: 2 %>
 
   <div class="d-flex justify-content-between mt-4 mb-5">
       <%= link_to 'Назад', new_task_path, :class => 'btn btn-outline-primary' %>

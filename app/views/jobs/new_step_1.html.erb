@@ -40,7 +40,8 @@
     <%= form.text_field :social_network_link, :class => 'form-control' %>
   </div>
 
-  <% form.number_field :step, value: 1 %>
+  <%# form.number_field :step, value: 1 %>
+  <%= form.hidden_field :step, value: 1 %>
 
   <div class="d-flex justify-content-between mt-4 mb-5">
       <%= link_to 'Назад', jobs_path, :class => 'btn btn-outline-primary' %>
